@@ -1,6 +1,6 @@
 ---
 title: Setup ruby/debug with VSCode
-subtitle: setup-ruby-debug-with-vscode
+slug: setup-ruby-debug-with-vscode
 tags: ruby, ruby-on-rails, debugging, debug, vscode
 domain: st0012.hashnode.dev
 ---
