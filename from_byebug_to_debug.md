@@ -214,7 +214,7 @@ I will write another dedicated article to introduce `debug`'s tracing functional
 - `trace exception` - to monitor exceptions raised in your code. You may be surprised by the exceptions raised and rescued in your application under the surface.
 - `trace object <expr>` - to observe an object's activities: receiving a method call or being passed to a method call.
 
-    ![trace object](https://user-images.githubusercontent.com/5079556/183886863-16ca26d8-681a-41fb-8a8c-49e271986ba7.png)
+    ![trace object](https://user-images.githubusercontent.com/5079556/183893134-f7e3e26b-c5ef-49cb-9c6b-9595c373c8c1.png)
 
 || byebug | debug |
 |---|---|---|
