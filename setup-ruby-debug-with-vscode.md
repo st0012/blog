@@ -34,7 +34,7 @@ If you want to debug a Rails/web application, do these instead:
 4. Click the dropdown besides the button and select `Attach with rdbg`
 5. Click the play button
 6. It should now connect the VSCode to the debugger
-  - If it stops at somewhere in your web server (like [puma](https://github.com/puma/puma)). Hit `continue` or `F5`. This will be resolved in the next `1.6.0` release.
+    - If it stops at somewhere in your web server (like [puma](https://github.com/puma/puma)), please upgrade to the latest version (v1.6.0+)
 7. Send some requests and it should stop at your breakpoints
 
 **Video**
