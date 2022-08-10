@@ -16,31 +16,6 @@ Disclaimers:
 - Its purpose is to give a higher-level comparison. To learn more about `debug`'s specific usages, please check its [official documentation](https://github.com/ruby/debug).
 - It doesn't contain all the features but should already cover most of them.
 
-# Table of Content
-
-- [Table of Content](#table-of-content)
-- [Advantages of `debug`](#advantages-of-debug)
-- [Disadvantages of `debug`](#disadvantages-of-debug)
-- [`byebug` vs `debug`](#byebug-vs-debug)
-  - [Installation](#installation)
-  - [Start Debugging](#start-debugging)
-  - [User Experience Features](#user-experience-features)
-  - [Evaluation](#evaluation)
-  - [Flow Control & Frame Navigation](#flow-control--frame-navigation)
-  - [Thread Control](#thread-control)
-  - [Breakpoint](#breakpoint)
-    - [Setting Breakpoints](#setting-breakpoints)
-    - [Managing Breakpoints](#managing-breakpoints)
-  - [Information](#information)
-    - [Backtrace](#backtrace)
-    - [Varibles/Constants](#variblesconstants)
-    - [Methods](#methods)
-  - [Tracing](#tracing)
-  - [Configuration](#configuration)
-  - [Remote Debugging](#remote-debugging)
-- [Wrapping Up](#wrapping-up)
-- [References](#references)
-
 # Advantages of `debug`
 
 Before we get into individual features, I want to quickly mention some advantages of `debug`:
