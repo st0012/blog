@@ -6,7 +6,7 @@ tags: ruby, ruby-on-rails, debugging, debug, vscode
 domain: st0012.hashnode.dev
 ---
 
-Switching to a new debugger and potentially changing your debugging process could be scary. So I hope this post can help you get familiar with [`ruby/debug`](https://github.com/ruby/debug) and determine whether to switch to it.
+Switching to a new debugger and potentially changing your debugging process could be scary. So I hope this post can help you get familiar with [`ruby/debug`](https://github.com/ruby/debug) and make the migration smoother.
 
 (In the rest of the article, I'll use `debug` to refer to `ruby/debug`)
 
@@ -53,6 +53,7 @@ Before we get into individual features, I want to quickly mention some advantage
 | Bundler | `gem "byebug"` | `gem "debug"` |
 | Dependencies | No | `irb`, `reline` |
 | Has C extension | Yes | Yes |
+| Latest version | [11.1.3](https://github.com/deivid-rodriguez/byebug/releases/tag/v11.1.3) (23 Apr 2020) | [1.6.2](https://github.com/ruby/debug/releases/tag/v1.6.2) (10 Aug 2022) |
 
 ## Start Debugging
 
