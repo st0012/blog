@@ -1,6 +1,7 @@
 ---
-title: Byebug vs ruby/debug
-slug: byebug-vs-ruby-debug
+title: From byebug to ruby/debug
+slug: from-byebug-to-ruby-debug
+seriies: ruby-debug
 tags: ruby, ruby-on-rails, debugging, debug, vscode
 domain: st0012.hashnode.dev
 ---
