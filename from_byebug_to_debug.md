@@ -24,18 +24,18 @@ Before we get into individual features, I want to quickly mention some advantage
 
     <img width="50%" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ir3yykmwcaw3ct6h7y54.png">
 
-- [Backtrace with method/block arguments](#backtrace)
+- [Backtrace with method/block arguments](#heading-backtrace)
 
     <img width="60%" src="https://user-images.githubusercontent.com/5079556/183871321-b2feb33e-4733-41d5-9266-3e4c1f1daa29.png">
 
 - Immune from the [compatibility issue with Zeitwerk](https://github.com/deivid-rodriguez/byebug/issues/564)
-- Powerful [breakpoints](#breakpoint) and [tracers](#tracer)
-- [Convenient remote debugging and VSCode integration](#remote-debugging)
-    - [Setting it up with VSCode](https://st0012.dev/setup-ruby-debug-with-vscode)
+- Powerful [breakpoints](#heading-breakpoint) and [tracers](#heading-tracing)
+- [Convenient remote debugging functionality and VSCode integration](#heading-remote-debugging)
+    - 👉 [Learn how to set it up with VSCode](https://st0012.dev/setup-ruby-debug-with-vscode)
 
 # Disadvantages of `debug`
 
-- Less flexible on [thread control](#thread-control)
+- Less flexible on [thread control](#heading-thread-control)
 - Doesn't work well with Fiber yet
 - Doesn't have `pry` integration like `pry-byebug`
 - No per-project configuration
