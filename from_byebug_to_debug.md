@@ -38,6 +38,7 @@ Before we get into individual features, I want to quickly mention some advantage
 - Less flexible on [thread control](#heading-thread-control)
 - Doesn't work well with Fiber yet
 - Doesn't have `pry` integration like `pry-byebug`
+- Less learning resources
 - No per-project configuration
 
 # `byebug` vs `debug`
