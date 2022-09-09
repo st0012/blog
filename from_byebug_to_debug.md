@@ -6,7 +6,7 @@ tags: ruby, ruby-on-rails, debugging, debug, vscode
 domain: st0012.hashnode.dev
 ---
 
-**[Link to Japanese version](https://techracho.bpsinc.jp/hachi8833/2022_09_01/121134)**
+**Link to Japanese version: `https://techracho.bpsinc.jp/hachi8833/2022_09_01`** (The platform has issues generating the right link for this url)
 
 Switching to a new debugger and potentially changing your debugging process could be scary. So I hope this post can help you get familiar with [`ruby/debug`](https://github.com/ruby/debug) and make the migration smoother.
 
