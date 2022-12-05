@@ -6,7 +6,7 @@ tags: ruby, ruby-on-rails, debugging, debug, vscode
 domain: st0012.hashnode.dev
 ---
 
-**Link to Japanese version: `https://techracho.bpsinc.jp/hachi8833/2022_09_01`** (The platform has issues generating the right link for this url)
+**Link to Japanese version: `https://techracho.bpsinc.jp/hachi8833/2022_09_01`** (Hashnode has issues generating the right link for this url)
 
 **Link to my talk: [ruby/debug - The best investment for your productivity](https://lrug.org/#november-2022-meeting--rubydebug---the-best-investment-for-your-productivity)**
 
