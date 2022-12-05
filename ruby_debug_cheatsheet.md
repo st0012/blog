@@ -10,6 +10,8 @@ This cheatsheet can help you get started with [ruby/debug](https://github.com/ru
 
 If you're migrating from `byebug`, I also recommend checking my [byebug to ruby/debug migration guide](https://st0012.dev/from-byebug-to-ruby-debug).
 
+I also shared how to build a powerful debugging workflow with it in my talk: [ruby/debug - The best investment for your productivity](https://lrug.org/#november-2022-meeting--rubydebug---the-best-investment-for-your-productivity).
+
 ## Getting Started
 
 1. Add `gem "debug"` to your `Gemfile`
