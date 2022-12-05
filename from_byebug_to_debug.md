@@ -8,6 +8,8 @@ domain: st0012.hashnode.dev
 
 **Link to Japanese version: `https://techracho.bpsinc.jp/hachi8833/2022_09_01`** (The platform has issues generating the right link for this url)
 
+**Link to my talk: [ruby/debug - The best investment for your productivity](https://lrug.org/#november-2022-meeting--rubydebug---the-best-investment-for-your-productivity)**
+
 Switching to a new debugger and potentially changing your debugging process could be scary. So I hope this post can help you get familiar with [`ruby/debug`](https://github.com/ruby/debug) and make the migration smoother.
 
 (In the rest of the article, I'll use `debug` to refer to `ruby/debug`)
@@ -56,7 +58,7 @@ Before we get into individual features, I want to quickly mention some advantage
 | Bundler | `gem "byebug"` | `gem "debug"` |
 | Dependencies | No | `irb`, `reline` |
 | Has C extension | Yes | Yes |
-| Latest version | [11.1.3](https://github.com/deivid-rodriguez/byebug/releases/tag/v11.1.3) (23 Apr 2020) | [1.6.2](https://github.com/ruby/debug/releases/tag/v1.6.2) (10 Aug 2022) |
+| Latest version | [11.1.3](https://github.com/deivid-rodriguez/byebug/releases/tag/v11.1.3) (23 Apr 2020) | [1.7.0](https://github.com/ruby/debug/releases/tag/v1.7.0) (2 Dec 2022) |
 
 ## Start Debugging
 
