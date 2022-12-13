@@ -154,7 +154,6 @@ irb(main):001:0> debug
 
 And the rest of debugging commands (`<cmd>`) are shortcuts of `debug` + `<cmd>`.
 
-
 For example, we may `step` after running `debug`. In this case, you can just run `step` in IRB, and it will start the debugging session and then run `step`.
 
 ```
@@ -181,6 +180,33 @@ The long-term goal is to make IRB an interface of the `debug` gem, like what `pr
 certain `debug` commands without leaving the IRB session.
 
 But for now, we hope to make the scene transition easier with these command shortcuts.
+
+#### Debugging with a REPL (`binding.irb`) V.S. Debugging with a debugger (`binding.b`)
+
+A REPL only gives you access to the breakpoint (`binding.irb`)'s surrounding context.
+
+For example, if you put `binding.irb` inside a `bar` method, you can only see the locals available inside that method.
+
+```rb
+def foo(n)
+  bar(n + 1)
+end
+
+def bar(x)
+  binding.irb # you can only see x
+  baz(x + 10)
+end
+```
+
+But if you're inside a debugger, either through the `binding.b` breakpoint or the new `debug` command, you get the power to:
+
+- Move along with the program's execution through commands like `step` or `next`.
+    - `step` will let you enter the `baz` method's context.
+- Navigate between the frames on the current callstack with the `up` or `down` commands.
+    - You can go back to `foo` and see the value of `n`.
+- Dynamically set breakpoints with the `break` or `catch` commands.
+
+To learn more about how to utilise a debugger, please watch my talk: [ruby/debug - The best investment for your productivity](https://assets.lrug.org/videos/2022/november/stan-lo-ruby-debug-the-best-investment-for-your-productivity-lrug-nov-2022.mp4).
 
 ## Command Improvements
 
