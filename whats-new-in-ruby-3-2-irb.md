@@ -40,7 +40,7 @@ This command prints all available IRB commands with their description. It's simi
 
 Output of `show_cmds` in `v1.6`:
 
-```
+```txt
 IRB
   cwws           Show the current workspace.
   chws           Change the current workspace to an object.
@@ -107,7 +107,7 @@ So we want to encourage users to use `show_doc` from `v1.6` onward. And we'll co
 
 When you look at the output of `show_cmds`, you'll notice a big `Debugging` section:
 
-```
+```txt
 Debugging
   debug          Start the debugger of debug.gem.
   break          Start the debugger of debug.gem and run its `break` command.
@@ -128,7 +128,7 @@ The `debug` command does 2 things:
 1. If you haven't required the `debug` gem in the current IRB session, the command would require it for you.
 2. It'll then start a `debug` debugging session from the current context. It's the same as you enter a `binding.b` breakpoint.
 
-```
+```txt
 From: test.rb @ line 4 :
 
     1: a = 1
@@ -156,7 +156,7 @@ And the rest of debugging commands (`<cmd>`) are shortcuts of `debug` + `<cmd>`.
 
 For example, we may `step` after running `debug`. In this case, you can just run `step` in IRB, and it will start the debugging session and then run `step`.
 
-```
+```txt
 From: test.rb @ line 1 :
 
  => 1: binding.irb
