@@ -30,7 +30,7 @@ In recent releases, we added a bunch of new commands to IRB:
   - `backtrace`
   - `info`
 
-The number of new commands may look intimitating, so let me introduce them one by one:
+The number of new commands may look intimidating, so let me introduce them one by one:
 
 ### `show_cmds`
 
@@ -236,6 +236,4 @@ We hope these changes can make IRB more convenient and helpful. If you can, plea
 
 When you see any problems, please [open an issue](https://github.com/ruby/irb/issues/new). We want to detect as many issues before Ruby 3.2 as possible.
 
-Finally, if you find posts like this interesting, please subscribe to the [Rails at Scale blog](https://railsatscale.com/). The Shopify Ruby and Rails Infrastructure Team will post articles covering different aspects of our works, such as this one.
-
-I'll keep posting news like this here too, but you'll see a lot more content if you subscribe to the Rails at Scale blog ;-)
+I'll keep posting news like this here too, but you'll see a lot more content if you subscribe to the [Rails at Scale blog](https://railsatscale.com/) ;-)
