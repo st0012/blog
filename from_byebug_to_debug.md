@@ -36,12 +36,12 @@ Before we get into individual features, I want to quickly mention some advantage
 - Powerful [breakpoints](#heading-breakpoint) and [tracers](#heading-tracing)
 - [Convenient remote debugging functionality and VSCode integration](#heading-remote-debugging)
     - 👉 [Learn how to set it up with VSCode](https://st0012.dev/setup-ruby-debug-with-vscode)
+- Direct integration [from IRB](https://github.com/ruby/irb#debugging-with-irb)
 
 # Disadvantages of `debug`
 
 - Less flexible on [thread control](#heading-thread-control)
 - Doesn't work well with Fiber yet
-- Doesn't have `pry` integration like `pry-byebug`
 - Less learning resources
 - No per-project configuration
 
@@ -51,31 +51,31 @@ Before we get into individual features, I want to quickly mention some advantage
 
 (Although Ruby `3.1` comes with `debug` `v1.4`, I recommend always using its latest release)
 
-|| byebug | debug |
-|---|---|---|
-| Supported Ruby version | 2.5+ | 2.6+ |
-| Gem install | `gem install byebug` | `gem install debug` |
-| Bundler | `gem "byebug"` | `gem "debug"` |
-| Dependencies | No | `irb`, `reline` |
-| Has C extension | Yes | Yes |
-| Latest version | [11.1.3](https://github.com/deivid-rodriguez/byebug/releases/tag/v11.1.3) (23 Apr 2020) | [1.7.0](https://github.com/ruby/debug/releases/tag/v1.7.0) (2 Dec 2022) |
+|                        | byebug                                                                                  | debug                                                                   |
+| ---------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| Supported Ruby version | 2.5+                                                                                    | 2.6+                                                                    |
+| Gem install            | `gem install byebug`                                                                    | `gem install debug`                                                     |
+| Bundler                | `gem "byebug"`                                                                          | `gem "debug"`                                                           |
+| Dependencies           | No                                                                                      | `irb`, `reline`                                                         |
+| Has C extension        | Yes                                                                                     | Yes                                                                     |
+| Latest version         | [11.1.3](https://github.com/deivid-rodriguez/byebug/releases/tag/v11.1.3) (23 Apr 2020) | [1.8.0](https://github.com/ruby/debug/releases/tag/v1.8.0) (9 May 2023) |
 
 ## Start Debugging
 
-|| byebug | debug |
-|---|---|---|
-| Via executable | `byebug foo.rb` | `rdbg foo.rb` |
-| Via debugger statement | `byebug` | `binding.break`, `binding.b`, `debugger` (the same) |
-| Via requiring | No | `require "debug/start"` |
+|                        | byebug          | debug                                               |
+| ---------------------- | --------------- | --------------------------------------------------- |
+| Via executable         | `byebug foo.rb` | `rdbg foo.rb`                                       |
+| Via debugger statement | `byebug`        | `binding.break`, `binding.b`, `debugger` (the same) |
+| Via requiring          | No              | `require "debug/start"`                             |
 
 ## User Experience Features
 
-|| byebug | debug |
-|---|---|---|
-| Colorizing | No | Yes |
-| Command history | Yes | Yes |
-| Help command | `h[elp]` | `h[elp]` |
-| Edit source file | `edit` | `edit` |
+|                  | byebug   | debug    |
+| ---------------- | -------- | -------- |
+| Colorizing       | No       | Yes      |
+| Command history  | Yes      | Yes      |
+| Help command     | `h[elp]` | `h[elp]` |
+| Edit source file | `edit`   | `edit`   |
 
 ## Evaluation
 
@@ -84,40 +84,40 @@ Code evaluation in REPL is more or less the same between `byebug` and `debug`, t
 - If the expression doesn't match a console command, like `my_method(arg)`, it'll be evaluated as Ruby code
 - If the expression matches a console command, like `n`, you can use console commands to evaluate it
 
-|| byebug | debug |
-|---|---|---|
-| Execute debugger commands | `<cmd>` | `<cmd>`
-| Avoid expression/command conflicts | `eval <expr>` | `pp <expr>`, `p <expr>`, or `eval <expr>`
+|                                    | byebug        | debug                                     |
+| ---------------------------------- | ------------- | ----------------------------------------- |
+| Execute debugger commands          | `<cmd>`       | `<cmd>`                                   |
+| Avoid expression/command conflicts | `eval <expr>` | `pp <expr>`, `p <expr>`, or `eval <expr>` |
 
 ## Flow Control & Frame Navigation
 
 `debug` provides the same stepping commands as `byebug` does. So `byebug` users can switch to `debug` without learning new behaviors.
 
-|| byebug | debug |
-|---|---|---|
-| Step in | `s[tep]` | `s[tep]` |
-| Step over | `n[ext]` | `n[ext]` |
-| Finish | `fin[ish]` | `fin[ish]` |
+|                      | byebug         | debug          |
+| -------------------- | -------------- | -------------- |
+| Step in              | `s[tep]`       | `s[tep]`       |
+| Step over            | `n[ext]`       | `n[ext]`       |
+| Finish               | `fin[ish]`     | `fin[ish]`     |
 | Move to `<id>` frame | `f[rame] <id>` | `f[rame] <id>` |
-| Move up a frame | `up` | `up` |
-| Move down a frame | `down` | `down` |
-| Move up n frames | `up <n>` | No |
-| Move down n frames | `down <n>` | No |
-| Continue the program | `c[ontinue]` | `c[ontinue]` |
-| Quit the debugger | `q[uit]` | `q[uit]` |
-| Kill the program | `kill` | `kill` |
+| Move up a frame      | `up`           | `up`           |
+| Move down a frame    | `down`         | `down`         |
+| Move up n frames     | `up <n>`       | No             |
+| Move down n frames   | `down <n>`     | No             |
+| Continue the program | `c[ontinue]`   | `c[ontinue]`   |
+| Quit the debugger    | `q[uit]`       | `q[uit]`       |
+| Kill the program     | `kill`         | `kill`         |
 
 ## Thread Control
 
 As previously mentioned, `debug` stops all threads when suspended and doesn't allow per-thread management at the moment. So it has simpler thread-related commands.
 
-|| byebug | debug |
-|---|---|---|
-| Thread suspension | Only the current thread | All threads |
-| List all threads | `th[read] l` | `th[read]` |
-| Switch to thread | `th[read] switch <id>` | `th[read] <id>` |
-| Stop a thread | `th[read] stop <id>` | No |
-| Resume a thread | `th[read] resume <id>` | No |
+|                   | byebug                  | debug           |
+| ----------------- | ----------------------- | --------------- |
+| Thread suspension | Only the current thread | All threads     |
+| List all threads  | `th[read] l`            | `th[read]`      |
+| Switch to thread  | `th[read] switch <id>`  | `th[read] <id>` |
+| Stop a thread     | `th[read] stop <id>`    | No              |
+| Resume a thread   | `th[read] resume <id>`  | No              |
 
 ## Breakpoint
 
@@ -129,26 +129,26 @@ Although `byebug` already has decent breakpoints support, `debug` takes it to an
 
 ### Setting Breakpoints
 
-|| byebug | debug |
-|---|---|---|
-| On line | `b[reak] <line>` | `b[reak] <line>` |
-| On file:line | `b[reak] <file>:<line>` | `b[reak] <file>:<line>` |
-| On a method | `b[reak] <class>#<method>` | `b[reak] <class>#<method>` |
-| With a condition | `b[reak] ... if <expr>` | `b[reak] ... if: <expr>` |
-| With a path condition | No | `b[reak] ... path: /path/` |
-| To run a command and continue | No | `b[reak] ... do: <cmd>` |
-| To run a command before stopping | No | `b[reak] ... pre: <cmd>` |
-| Exception breakpoint | No | `catch <ExceptionClass>` |
-| Instance variable watch breakpoint | No | `watch <@ivar>` |
+|                                    | byebug                     | debug                      |
+| ---------------------------------- | -------------------------- | -------------------------- |
+| On line                            | `b[reak] <line>`           | `b[reak] <line>`           |
+| On file:line                       | `b[reak] <file>:<line>`    | `b[reak] <file>:<line>`    |
+| On a method                        | `b[reak] <class>#<method>` | `b[reak] <class>#<method>` |
+| With a condition                   | `b[reak] ... if <expr>`    | `b[reak] ... if: <expr>`   |
+| With a path condition              | No                         | `b[reak] ... path: /path/` |
+| To run a command and continue      | No                         | `b[reak] ... do: <cmd>`    |
+| To run a command before stopping   | No                         | `b[reak] ... pre: <cmd>`   |
+| Exception breakpoint               | No                         | `catch <ExceptionClass>`   |
+| Instance variable watch breakpoint | No                         | `watch <@ivar>`            |
 
 ### Managing Breakpoints
 
-|| byebug | debug |
-|---|---|---|
-| List all breakpoints | `info breakpoints` | `b[reak]` |
-| Set a breakpoint | `b[reak] ...` | `b[reak] ...` |
-| Delete a breakpoint | `del[ete] <id>` | `del[ete] <id>` |
-| Delete all breakpoints | `del[ete]` | `del[ete]` |
+|                        | byebug             | debug           |
+| ---------------------- | ------------------ | --------------- |
+| List all breakpoints   | `info breakpoints` | `b[reak]`       |
+| Set a breakpoint       | `b[reak] ...`      | `b[reak] ...`   |
+| Delete a breakpoint    | `del[ete] <id>`    | `del[ete] <id>` |
+| Delete all breakpoints | `del[ete]`         | `del[ete]`      |
 
 ## Information
 
@@ -160,33 +160,33 @@ Backtrace in `debug` contains values of method call or block arguments. This sma
 
 The filtering support can help you focus on relevant frames and ignore the ones from frameworks or libraries.
 
-|| byebug | debug |
-|---|---|---|
-| Show backtrace | `where`, `backtrace`, `bt` | `backtrace`, `bt` |
-| Displaying method/block arguments in backtrace | No | Yes |
-| Filter backtrace | No | `bt /regexp/` |
-| Limit the number of backtraces | No | `bt <n>` |
+|                                                | byebug                     | debug             |
+| ---------------------------------------------- | -------------------------- | ----------------- |
+| Show backtrace                                 | `where`, `backtrace`, `bt` | `backtrace`, `bt` |
+| Displaying method/block arguments in backtrace | No                         | Yes               |
+| Filter backtrace                               | No                         | `bt /regexp/`     |
+| Limit the number of backtraces                 | No                         | `bt <n>`          |
 
 ### Varibles/Constants
 
-|| byebug | debug |
-|---|---|---|
-| Show local varibales | `var local` | `info l` |
-| Show instance variables | `var instance` | `info i` |
-| Show global varibales | `var global` | `info g` |
-| Show constants | `var const` | `info c` |
-| Show only arguments | `var args` | No (included in `info l`) |
-| Filter variables/constants by names | No | `info ... /regexp/` |
+|                                     | byebug         | debug                     |
+| ----------------------------------- | -------------- | ------------------------- |
+| Show local varibales                | `var local`    | `info l`                  |
+| Show instance variables             | `var instance` | `info i`                  |
+| Show global varibales               | `var global`   | `info g`                  |
+| Show constants                      | `var const`    | `info c`                  |
+| Show only arguments                 | `var args`     | No (included in `info l`) |
+| Filter variables/constants by names | No             | `info ... /regexp/`       |
 
 ### Methods
 
 While `debug` doesn't have a dedicated command to list an object's methods, it has a `ls` command that's similar to
 `irb` or `pry`'s.
 
-|| byebug | debug |
-|---|---|---|
-| `obj.methods` | `method instance obj` | No |
-| `obj.methods(false)` | `method obj.class` | `ls obj` |
+|                      | byebug                | debug    |
+| -------------------- | --------------------- | -------- |
+| `obj.methods`        | `method instance obj` | No       |
+| `obj.methods(false)` | `method obj.class`    | `ls obj` |
 
 ## Tracing
 
@@ -197,29 +197,29 @@ I will write another dedicated article to introduce `debug`'s tracing functional
 
     ![trace object](https://user-images.githubusercontent.com/5079556/183893134-f7e3e26b-c5ef-49cb-9c6b-9595c373c8c1.png)
 
-|| byebug | debug |
-|---|---|---|
-| Line tracer | `set linetrace` | `trace line` |
-| Global variable tracer | `tarcevar` | No |
-| Allow multiple tracers | No | Yes |
-| Method call tracer | No | `trace call` |
-| Exceptions tracer | No | `trace exception` |
-| Ruby object tracer | No | `trace object <expr>` |
-| Filter tracing output | No | `trace ... /regexp/` |
-| Disable tracer | `set linetrace false` | `trace off [tracer type]` |
-| Disable the specific tracer | No | `trace off <id>` |
+|                             | byebug                | debug                     |
+| --------------------------- | --------------------- | ------------------------- |
+| Line tracer                 | `set linetrace`       | `trace line`              |
+| Global variable tracer      | `tarcevar`            | No                        |
+| Allow multiple tracers      | No                    | Yes                       |
+| Method call tracer          | No                    | `trace call`              |
+| Exceptions tracer           | No                    | `trace exception`         |
+| Ruby object tracer          | No                    | `trace object <expr>`     |
+| Filter tracing output       | No                    | `trace ... /regexp/`      |
+| Disable tracer              | `set linetrace false` | `trace off [tracer type]` |
+| Disable the specific tracer | No                    | `trace off <id>`          |
 
 ## Configuration
 
 `debug` supports a [wide range of configurations](https://github.com/ruby/debug#configuration) to make it fit your needs. But it doesn't support per-project RC files due to security concerns.
 
-|| byebug | debug |
-|---|---|---|
-| List all configs | No | `config` |
-| Show a config | `show <name>` | `config show <name>` |
-| Set a config | `set <name> <value>` | `config set <name> <value>` |
-| RC file name | `.byebugrc` | `.rdbgrc` (or `.rdbgrc.rb` for Ruby script) |
-| RC file locations | `$HOME` and project root | `$HOME` |
+|                   | byebug                   | debug                                       |
+| ----------------- | ------------------------ | ------------------------------------------- |
+| List all configs  | No                       | `config`                                    |
+| Show a config     | `show <name>`            | `config show <name>`                        |
+| Set a config      | `set <name> <value>`     | `config set <name> <value>`                 |
+| RC file name      | `.byebugrc`              | `.rdbgrc` (or `.rdbgrc.rb` for Ruby script) |
+| RC file locations | `$HOME` and project root | `$HOME`                                     |
 
 ## Remote Debugging
 
@@ -228,12 +228,12 @@ It's also crucial for connecting to different debugger clients like VSCode or Ch
 
 So if you have needs in this area, migrating to `debug` is your best option.
 
-|| byebug | debug |
-|---|---|---|
-| Connect via TCP/IP | Yes | Yes |
-| Connect via Unix Domain Socket | No | Yes |
-| VSCode integration through [Debug Adapter Protocol (DAP)](https://microsoft.github.io/debug-adapter-protocol/specification) | No | Yes |
-| Chrome integration through [Chrome DevTools Protocol (CDP)](https://chromedevtools.github.io/devtools-protocol/) | No | Yes |
+|                                                                                                                             | byebug | debug |
+| --------------------------------------------------------------------------------------------------------------------------- | ------ | ----- |
+| Connect via TCP/IP                                                                                                          | Yes    | Yes   |
+| Connect via Unix Domain Socket                                                                                              | No     | Yes   |
+| VSCode integration through [Debug Adapter Protocol (DAP)](https://microsoft.github.io/debug-adapter-protocol/specification) | No     | Yes   |
+| Chrome integration through [Chrome DevTools Protocol (CDP)](https://chromedevtools.github.io/devtools-protocol/)            | No     | Yes   |
 
 # Wrapping Up
 
